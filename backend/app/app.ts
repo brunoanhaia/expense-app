@@ -7,10 +7,10 @@ import {Request, Response, NextFunction, ErrorRequestHandler, Application} from 
 // import logger from 'morgan';
 // import bodyParser from 'body-parser';
 // import cors from 'cors';
-import * as dotenv from 'dotenv'
+import * as dot_env from 'dotenv'
 
 //Loading .env file from root path
-dotenv.config();
+dot_env.config();
 //
 // const app = express();
 // let global = {} as any;
@@ -64,8 +64,8 @@ export class App {
 
 
 
-    this.middlewares(appInit.middleWares);
-    this.routes(appInit.controllers);
+    this.middlewareList(appInit.middleWares);
+    this.routeList(appInit.controllers);
     this.settings(appInit.settings);
     this.assets();
 
@@ -73,13 +73,13 @@ export class App {
     this.app.use(this.errorHandler);
   }
 
-  private middlewares(middlewares: {forEach: (arg0: (middleware: any) => void) => void; }){
-    middlewares.forEach(middleware => {
+  private middlewareList(middlewareList: {forEach: (arg0: (middleware: any) => void) => void; }){
+    middlewareList.forEach(middleware => {
       this.app.use(middleware);
     })
   }
 
-  public routes(controllers: {forEach: (arg0: (controller: any) => void) => void; }) {
+  public routeList(controllers: {forEach: (arg0: (controller: any) => void) => void; }) {
     controllers.forEach( controller => {
       this.app.use(controller);
     })
