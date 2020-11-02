@@ -1,9 +1,30 @@
+import express from 'express';
+import { Router } from 'express';
+import LoginRouter from "./modules/login.router";
+import IRouterBase from "../interfaces/IControllerBase.interface";
 
-const express = require('express');
-let router = express.Router();
+class ApiRouter implements IRouterBase {
 
-router.use('/login', (req, res) => {
-    res.send("it works");
-});
+    public path = '/api';
+    public router = Router();
 
-export { router };
+    constructor() {
+        this.initRoutes();
+    }
+
+    private routes = [
+        new LoginRouter()
+    ]
+
+    public initRoutes() {
+        this.router.get('/', (req, res) => {
+            return res.json({"message": `${this.path}: It works`});
+        });
+
+        this.routes.forEach( route => {
+            this.router.use(route.path, route.router);
+        });
+    }
+}
+
+export default ApiRouter;

@@ -80,8 +80,9 @@ export class App {
   }
 
   public routeList(controllers: {forEach: (arg0: (controller: any) => void) => void; }) {
-    controllers.forEach( controller => {
-      this.app.use(controller);
+    controllers.forEach( (controller) => {
+      // console.log(controller);
+      this.app.use(controller.path, controller.router);
     })
   }
 

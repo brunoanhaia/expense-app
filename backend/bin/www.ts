@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-import { router as api } from "../app/routes/api";
+import ApiRouter from "../app/routes/api";
 
 import { App } from '../app/app';
 import * as bodyParser from 'body-parser';
@@ -25,7 +25,7 @@ const middleWares = [
 ];
 
 const controllers = [
-	api
+	new ApiRouter()
 ];
 
 const settings = [
