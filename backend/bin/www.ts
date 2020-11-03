@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-import ApiRouter from "../app/routes/api";
+import ApiRouter from "../app/routes/ApiRouter";
 
 import { App } from '../app/app';
 import * as bodyParser from 'body-parser';

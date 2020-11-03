@@ -1,6 +1,5 @@
-import express from 'express';
 import { Router } from 'express';
-import LoginRouter from "./modules/login.router";
+import LoginRouter from "./modules/LoginRouter";
 import IRouterBase from "../interfaces/IControllerBase.interface";
 
 class ApiRouter implements IRouterBase {
